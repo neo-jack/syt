@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<!-- 
+  lang="en" 表示这个 HTML 文档的主要语言是英语。
+  这有助于搜索引擎和浏览器（例如屏幕阅读器）正确地处理和展示页面内容。
+-->
+<html lang="en">
+  <head>
+    <!-- 
+      charset="utf-8" 是一个关键的字符编码声明。
+      它告诉浏览器使用 UTF-8 编码来解析这个页面，UTF-8 支持几乎所有的字符和符号，
+      可以有效避免中文或其他特殊字符显示为乱码。
+    -->
+    <meta charset="utf-8" />
+    <!--
+      <title> 标签定义了显示在浏览器标签页、收藏夹和搜索结果中的页面标题。
+      这是用户识别你网站的重要标识。
+    -->
+    <title>医通</title>
+  </head>
+  <body>
+    <!--
+      这是整个 React 单页应用（SPA）的“挂载点”或“根容器”。
+      它的作用是一个占位符，本身是空的。
+      当 React 应用启动时（通过 src/index.tsx），
+      它会通过 document.getElementById('root') 找到这个 div，
+      然后将整个应用的所有组件渲染到这个 div 内部。
+      你看到的所有页面内容，实际上都是被动态地插入到这个 div 中的。
+    -->
+    <div id="root"></div>
+    <!--
+      在项目构建（npm run build）之后，Webpack 会自动在这个地方
+      插入一个 <script> 标签，用来引入打包和压缩后的 JavaScript 文件。
+      正是这个脚本的执行，启动了整个 React 应用。
+    -->
+  </body>
+</html>
