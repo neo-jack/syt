@@ -19,6 +19,7 @@ function App() {
   // 调用 useAppSelector 并传入 selectLang 选择器，
   // 这会从全局 Redux store 中订阅并获取 state.app.lang 的值。
   // 当这个值变化时，App 组件会自动重新渲染。
+  //ok
   const lang = useAppSelector(selectLang);
 
   // 2. 返回要渲染的 JSX：

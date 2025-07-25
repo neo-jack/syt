@@ -34,6 +34,8 @@ export const appSlice = createSlice({
     // reducer函数接受两个参数
     // state：当前模块管理的state数据（更新前的，所以也叫prevState）
     // action：调用dispatch传递的action对象 {type: xxx, payload: 参与更新的数据}
+    
+    
     setLang(state, action) {
       const lang = action.payload;
       localStorage.setItem("lang", lang);
