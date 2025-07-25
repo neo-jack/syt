@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="1200" height="800" viewBox="0 0 1200 800" xmlns="http://www.w3.org/2000/svg">
+  <!-- 背景 -->
+  <rect width="1200" height="800" fill="#f8f9fa"/>
+  
+  <!-- 标题 -->
+  <text x="600" y="40" font-family="Arial, sans-serif" font-size="28" font-weight="bold" text-anchor="middle" fill="#1a1a1a">
+    SYT Admin 系统架构图
+  </text>
+  
+  <!-- UI层 -->
+  <g id="ui-layer">
+    <rect x="50" y="80" width="1100" height="120" rx="10" fill="#e3f2fd" stroke="#1976d2" stroke-width="2"/>
+    <text x="600" y="110" font-family="Arial, sans-serif" font-size="20" font-weight="bold" text-anchor="middle" fill="#1976d2">
+      UI 层 (Presentation Layer)
+    </text>
+    
+    <!-- UI组件 -->
+    <rect x="80" y="130" width="150" height="50" rx="5" fill="#ffffff" stroke="#1976d2" stroke-width="1"/>
+    <text x="155" y="160" font-family="Arial, sans-serif" font-size="14" text-anchor="middle" fill="#333">Pages</text>
+    
+    <rect x="250" y="130" width="150" height="50" rx="5" fill="#ffffff" stroke="#1976d2" stroke-width="1"/>
+    <text x="325" y="160" font-family="Arial, sans-serif" font-size="14" text-anchor="middle" fill="#333">Components</text>
+    
+    <rect x="420" y="130" width="150" height="50" rx="5" fill="#ffffff" stroke="#1976d2" stroke-width="1"/>
+    <text x="495" y="160" font-family="Arial, sans-serif" font-size="14" text-anchor="middle" fill="#333">Layouts</text>
+    
+    <rect x="590" y="130" width="150" height="50" rx="5" fill="#ffffff" stroke="#1976d2" stroke-width="1"/>
+    <text x="665" y="160" font-family="Arial, sans-serif" font-size="14" text-anchor="middle" fill="#333">Ant Design</text>
+    
+    <rect x="760" y="130" width="150" height="50" rx="5" fill="#ffffff" stroke="#1976d2" stroke-width="1"/>
+    <text x="835" y="160" font-family="Arial, sans-serif" font-size="14" text-anchor="middle" fill="#333">Styles (Less)</text>
+    
+    <rect x="930" y="130" width="190" height="50" rx="5" fill="#ffffff" stroke="#1976d2" stroke-width="1"/>
+    <text x="1025" y="160" font-family="Arial, sans-serif" font-size="14" text-anchor="middle" fill="#333">i18n (国际化)</text>
+  </g>
+  
+  <!-- 路由层 -->
+  <g id="routing-layer">
+    <rect x="50" y="230" width="1100" height="100" rx="10" fill="#f3e5f5" stroke="#7b1fa2" stroke-width="2"/>
+    <text x="600" y="260" font-family="Arial, sans-serif" font-size="20" font-weight="bold" text-anchor="middle" fill="#7b1fa2">
+      路由层 (Routing Layer)
+    </text>
+    
+    <rect x="450" y="270" width="300" height="40" rx="5" fill="#ffffff" stroke="#7b1fa2" stroke-width="1"/>
+    <text x="600" y="295" font-family="Arial, sans-serif" font-size="14" text-anchor="middle" fill="#333">React Router v6</text>
+  </g>
+  
+  <!-- 状态管理层 -->
+  <g id="state-layer">
+    <rect x="50" y="360" width="1100" height="120" rx="10" fill="#e8f5e9" stroke="#388e3c" stroke-width="2"/>
+    <text x="600" y="390" font-family="Arial, sans-serif" font-size="20" font-weight="bold" text-anchor="middle" fill="#388e3c">
+      状态管理层 (State Management)
+    </text>
+    
+    <rect x="200" y="410" width="200" height="50" rx="5" fill="#ffffff" stroke="#388e3c" stroke-width="1"/>
+    <text x="300" y="440" font-family="Arial, sans-serif" font-size="14" text-anchor="middle" fill="#333">Redux Toolkit</text>
+    
+    <rect x="450" y="410" width="200" height="50" rx="5" fill="#ffffff" stroke="#388e3c" stroke-width="1"/>
+    <text x="550" y="440" font-family="Arial, sans-serif" font-size="14" text-anchor="middle" fill="#333">React Redux</text>
+    
+    <rect x="700" y="410" width="200" height="50" rx="5" fill="#ffffff" stroke="#388e3c" stroke-width="1"/>
+    <text x="800" y="440" font-family="Arial, sans-serif" font-size="14" text-anchor="middle" fill="#333">Redux Store</text>
+  </g>
+  
+  <!-- 数据层 -->
+  <g id="data-layer">
+    <rect x="50" y="510" width="1100" height="120" rx="10" fill="#fff3e0" stroke="#f57c00" stroke-width="2"/>
+    <text x="600" y="540" font-family="Arial, sans-serif" font-size="20" font-weight="bold" text-anchor="middle" fill="#f57c00">
+      数据层 (Data Layer)
+    </text>
+    
+    <rect x="200" y="560" width="200" height="50" rx="5" fill="#ffffff" stroke="#f57c00" stroke-width="1"/>
+    <text x="300" y="590" font-family="Arial, sans-serif" font-size="14" text-anchor="middle" fill="#333">API Services</text>
+    
+    <rect x="450" y="560" width="200" height="50" rx="5" fill="#ffffff" stroke="#f57c00" stroke-width="1"/>
+    <text x="550" y="590" font-family="Arial, sans-serif" font-size="14" text-anchor="middle" fill="#333">Axios</text>
+    
+    <rect x="700" y="560" width="200" height="50" rx="5" fill="#ffffff" stroke="#f57c00" stroke-width="1"/>
+    <text x="800" y="590" font-family="Arial, sans-serif" font-size="14" text-anchor="middle" fill="#333">HTTP Interceptors</text>
+  </g>
+  
+  <!-- 工具层 -->
+  <g id="utils-layer">
+    <rect x="50" y="660" width="1100" height="100" rx="10" fill="#fce4ec" stroke="#c2185b" stroke-width="2"/>
+    <text x="600" y="690" font-family="Arial, sans-serif" font-size="20" font-weight="bold" text-anchor="middle" fill="#c2185b">
+      工具层 (Utils & Helpers)
+    </text>
+    
+    <rect x="150" y="710" width="150" height="40" rx="5" fill="#ffffff" stroke="#c2185b" stroke-width="1"/>
+    <text x="225" y="735" font-family="Arial, sans-serif" font-size="14" text-anchor="middle" fill="#333">Utils</text>
+    
+    <rect x="350" y="710" width="150" height="40" rx="5" fill="#ffffff" stroke="#c2185b" stroke-width="1"/>
+    <text x="425" y="735" font-family="Arial, sans-serif" font-size="14" text-anchor="middle" fill="#333">Types</text>
+    
+    <rect x="550" y="710" width="150" height="40" rx="5" fill="#ffffff" stroke="#c2185b" stroke-width="1"/>
+    <text x="625" y="735" font-family="Arial, sans-serif" font-size="14" text-anchor="middle" fill="#333">NProgress</text>
+    
+    <rect x="750" y="710" width="150" height="40" rx="5" fill="#ffffff" stroke="#c2185b" stroke-width="1"/>
+    <text x="825" y="735" font-family="Arial, sans-serif" font-size="14" text-anchor="middle" fill="#333">ECharts</text>
+    
+    <rect x="950" y="710" width="150" height="40" rx="5" fill="#ffffff" stroke="#c2185b" stroke-width="1"/>
+    <text x="1025" y="735" font-family="Arial, sans-serif" font-size="14" text-anchor="middle" fill="#333">TypeScript</text>
+  </g>
+  
+  <!-- 连接线 -->
+  <g id="connections" stroke="#666" stroke-width="2" fill="none">
+    <!-- UI到路由 -->
+    <path d="M 600 200 L 600 230" marker-end="url(#arrowhead)"/>
+    <!-- 路由到状态管理 -->
+    <path d="M 600 330 L 600 360" marker-end="url(#arrowhead)"/>
+    <!-- 状态管理到数据层 -->
+    <path d="M 600 480 L 600 510" marker-end="url(#arrowhead)"/>
+    <!-- 数据层到工具层 -->
+    <path d="M 600 630 L 600 660" marker-end="url(#arrowhead)"/>
+  </g>
+  
+  <!-- 箭头定义 -->
+  <defs>
+    <marker id="arrowhead" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+      <polygon points="0 0, 10 3.5, 0 7" fill="#666"/>
+    </marker>
+  </defs>
+  
+  <!-- 技术栈标签 -->
+  <g id="tech-stack" transform="translate(50, 50)">
+    <rect x="900" y="10" width="200" height="30" rx="15" fill="#4caf50" opacity="0.9"/>
+    <text x="1000" y="30" font-family="Arial, sans-serif" font-size="14" font-weight="bold" text-anchor="middle" fill="white">
+      React 18 + TypeScript
+    </text>
+  </g>
+</svg>

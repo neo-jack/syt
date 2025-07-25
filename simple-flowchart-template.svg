@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="1000" height="800" viewBox="0 0 1000 800" xmlns="http://www.w3.org/2000/svg">
+  <!-- 背景网格 -->
+  <defs>
+    <pattern id="grid" width="20" height="20" patternUnits="userSpaceOnUse">
+      <path d="M 20 0 L 0 0 0 20" fill="none" stroke="#e0e0e0" stroke-width="0.5"/>
+    </pattern>
+  </defs>
+  <rect width="1000" height="800" fill="white"/>
+  <rect width="1000" height="800" fill="url(#grid)"/>
+  
+  <!-- 标题 -->
+  <text x="500" y="40" font-family="Arial, sans-serif" font-size="28" font-weight="bold" text-anchor="middle" fill="#333">
+    业务流程图模板
+  </text>
+  
+  <!-- 开始节点 -->
+  <g id="start">
+    <ellipse cx="500" cy="100" rx="80" ry="40" fill="#4caf50" stroke="#2e7d32" stroke-width="2"/>
+    <text x="500" y="108" font-family="Arial, sans-serif" font-size="18" font-weight="bold" text-anchor="middle" fill="white">
+      开始
+    </text>
+  </g>
+  
+  <!-- 流程节点1 -->
+  <g id="process1">
+    <rect x="400" y="180" width="200" height="80" rx="10" fill="#2196f3" stroke="#1565c0" stroke-width="2"/>
+    <text x="500" y="215" font-family="Arial, sans-serif" font-size="16" text-anchor="middle" fill="white">
+      流程步骤 1
+    </text>
+    <text x="500" y="235" font-family="Arial, sans-serif" font-size="14" text-anchor="middle" fill="white">
+      (处理数据)
+    </text>
+  </g>
+  
+  <!-- 判断节点 -->
+  <g id="decision">
+    <path d="M 500 300 L 600 350 L 500 400 L 400 350 Z" fill="#ff9800" stroke="#e65100" stroke-width="2"/>
+    <text x="500" y="355" font-family="Arial, sans-serif" font-size="16" text-anchor="middle" fill="white">
+      条件判断
+    </text>
+  </g>
+  
+  <!-- 流程节点2 (左分支) -->
+  <g id="process2">
+    <rect x="200" y="440" width="180" height="80" rx="10" fill="#9c27b0" stroke="#6a1b9a" stroke-width="2"/>
+    <text x="290" y="475" font-family="Arial, sans-serif" font-size="16" text-anchor="middle" fill="white">
+      分支 A
+    </text>
+    <text x="290" y="495" font-family="Arial, sans-serif" font-size="14" text-anchor="middle" fill="white">
+      (条件为真)
+    </text>
+  </g>
+  
+  <!-- 流程节点3 (右分支) -->
+  <g id="process3">
+    <rect x="620" y="440" width="180" height="80" rx="10" fill="#e91e63" stroke="#c2185b" stroke-width="2"/>
+    <text x="710" y="475" font-family="Arial, sans-serif" font-size="16" text-anchor="middle" fill="white">
+      分支 B
+    </text>
+    <text x="710" y="495" font-family="Arial, sans-serif" font-size="14" text-anchor="middle" fill="white">
+      (条件为假)
+    </text>
+  </g>
+  
+  <!-- 汇合节点 -->
+  <g id="merge">
+    <rect x="400" y="580" width="200" height="80" rx="10" fill="#607d8b" stroke="#37474f" stroke-width="2"/>
+    <text x="500" y="615" font-family="Arial, sans-serif" font-size="16" text-anchor="middle" fill="white">
+      汇合处理
+    </text>
+    <text x="500" y="635" font-family="Arial, sans-serif" font-size="14" text-anchor="middle" fill="white">
+      (合并结果)
+    </text>
+  </g>
+  
+  <!-- 结束节点 -->
+  <g id="end">
+    <ellipse cx="500" cy="720" rx="80" ry="40" fill="#f44336" stroke="#c62828" stroke-width="2"/>
+    <text x="500" y="728" font-family="Arial, sans-serif" font-size="18" font-weight="bold" text-anchor="middle" fill="white">
+      结束
+    </text>
+  </g>
+  
+  <!-- 连接线 -->
+  <defs>
+    <marker id="arrowhead" markerWidth="10" markerHeight="7" refX="10" refY="3.5" orient="auto">
+      <polygon points="0 0, 10 3.5, 0 7" fill="#666"/>
+    </marker>
+  </defs>
+  
+  <g stroke="#666" stroke-width="2" fill="none" marker-end="url(#arrowhead)">
+    <!-- 开始到流程1 -->
+    <path d="M 500 140 L 500 180"/>
+    
+    <!-- 流程1到判断 -->
+    <path d="M 500 260 L 500 300"/>
+    
+    <!-- 判断到分支A -->
+    <path d="M 440 350 L 340 350 Q 290 350 290 400 L 290 440"/>
+    <text x="350" y="345" font-family="Arial, sans-serif" font-size="14" fill="#666">是</text>
+    
+    <!-- 判断到分支B -->
+    <path d="M 560 350 L 660 350 Q 710 350 710 400 L 710 440"/>
+    <text x="630" y="345" font-family="Arial, sans-serif" font-size="14" fill="#666">否</text>
+    
+    <!-- 分支A到汇合 -->
+    <path d="M 290 520 L 290 560 Q 290 620 350 620 L 400 620"/>
+    
+    <!-- 分支B到汇合 -->
+    <path d="M 710 520 L 710 560 Q 710 620 650 620 L 600 620"/>
+    
+    <!-- 汇合到结束 -->
+    <path d="M 500 660 L 500 680"/>
+  </g>
+  
+  <!-- 图例 -->
+  <g id="legend" transform="translate(50, 650)">
+    <text x="0" y="0" font-family="Arial, sans-serif" font-size="16" font-weight="bold" fill="#333">
+      图例说明:
+    </text>
+    
+    <ellipse cx="20" cy="30" rx="30" ry="15" fill="#4caf50" stroke="#2e7d32" stroke-width="1"/>
+    <text x="60" y="35" font-family="Arial, sans-serif" font-size="14" fill="#666">开始/结束</text>
+    
+    <rect x="5" y="55" width="30" height="20" rx="5" fill="#2196f3" stroke="#1565c0" stroke-width="1"/>
+    <text x="60" y="70" font-family="Arial, sans-serif" font-size="14" fill="#666">处理步骤</text>
+    
+    <path d="M 20 90 L 35 100 L 20 110 L 5 100 Z" fill="#ff9800" stroke="#e65100" stroke-width="1"/>
+    <text x="60" y="105" font-family="Arial, sans-serif" font-size="14" fill="#666">判断条件</text>
+  </g>
+</svg>
