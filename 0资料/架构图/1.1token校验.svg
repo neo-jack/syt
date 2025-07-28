@@ -1,0 +1,226 @@
+<svg width="1400" height="800" xmlns="http://www.w3.org/2000/svg" style="background: transparent;">
+  <defs>
+    <linearGradient id="startGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#4CAF50" />
+      <stop offset="100%" style="stop-color:#45a049" />
+    </linearGradient>
+    <linearGradient id="processGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#2196F3" />
+      <stop offset="100%" style="stop-color:#1976D2" />
+    </linearGradient>
+    <linearGradient id="decisionGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#FF9800" />
+      <stop offset="100%" style="stop-color:#F57C00" />
+    </linearGradient>
+    <linearGradient id="endGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#9C27B0" />
+      <stop offset="100%" style="stop-color:#7B1FA2" />
+    </linearGradient>
+    <linearGradient id="errorGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#F44336" />
+      <stop offset="100%" style="stop-color:#D32F2F" />
+    </linearGradient>
+    <linearGradient id="storageGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#607D8B" />
+      <stop offset="100%" style="stop-color:#455A64" />
+    </linearGradient>
+    
+    <marker id="arrowhead" markerWidth="12" markerHeight="8" refX="11" refY="4" orient="auto">
+      <polygon points="0 0, 12 4, 0 8" fill="#333"/>
+    </marker>
+  </defs>
+  
+  <!-- 1. 用户登录表单 -->
+  <rect x="50" y="30" width="220" height="100" rx="12" fill="url(#startGrad)" stroke="#2E7D32" stroke-width="2"/>
+  <text x="160" y="55" text-anchor="middle" fill="white" font-family="Arial" font-size="14" font-weight="bold">1. 用户登录表单</text>
+  <text x="160" y="75" text-anchor="middle" fill="white" font-family="Arial" font-size="11">/pages/login/index.tsx</text>
+  <text x="160" y="90" text-anchor="middle" fill="white" font-family="Arial" font-size="10">收集表单数据</text>
+  <text x="160" y="105" text-anchor="middle" fill="white" font-family="Arial" font-size="9">onFinish(values)</text>
+  <text x="160" y="120" text-anchor="middle" fill="white" font-family="Arial" font-size="9">{username, password}</text>
+  
+  <!-- 2. 触发Redux异步Action -->
+  <rect x="320" y="30" width="220" height="100" rx="12" fill="url(#processGrad)" stroke="#1565C0" stroke-width="2"/>
+  <text x="430" y="55" text-anchor="middle" fill="white" font-family="Arial" font-size="14" font-weight="bold">2. 触发Redux异步Action</text>
+  <text x="430" y="75" text-anchor="middle" fill="white" font-family="Arial" font-size="11">/pages/login/slice.ts</text>
+  <text x="430" y="90" text-anchor="middle" fill="white" font-family="Arial" font-size="10">调度登录异步任务</text>
+  <text x="430" y="105" text-anchor="middle" fill="white" font-family="Arial" font-size="9">dispatch(loginAsync(values))</text>
+  <text x="430" y="120" text-anchor="middle" fill="white" font-family="Arial" font-size="9">createAsyncThunk</text>
+  
+  <!-- 3. 调用API接口 -->
+  <rect x="590" y="30" width="220" height="100" rx="12" fill="url(#processGrad)" stroke="#1565C0" stroke-width="2"/>
+  <text x="700" y="55" text-anchor="middle" fill="white" font-family="Arial" font-size="14" font-weight="bold">3. 调用API接口</text>
+  <text x="700" y="75" text-anchor="middle" fill="white" font-family="Arial" font-size="11">/api/user/index.ts</text>
+  <text x="700" y="90" text-anchor="middle" fill="white" font-family="Arial" font-size="10">发送登录请求</text>
+  <text x="700" y="105" text-anchor="middle" fill="white" font-family="Arial" font-size="9">reqLogin(username, password)</text>
+  <text x="700" y="120" text-anchor="middle" fill="white" font-family="Arial" font-size="9">return request.post(...)</text>
+  
+  <!-- 4. HTTP请求拦截器 -->
+  <rect x="860" y="30" width="220" height="100" rx="12" fill="url(#processGrad)" stroke="#1565C0" stroke-width="2"/>
+  <text x="970" y="55" text-anchor="middle" fill="white" font-family="Arial" font-size="14" font-weight="bold">4. HTTP请求拦截器</text>
+  <text x="970" y="75" text-anchor="middle" fill="white" font-family="Arial" font-size="11">/utils/http/request.ts</text>
+  <text x="970" y="90" text-anchor="middle" fill="white" font-family="Arial" font-size="10">配置请求头和基础参数</text>
+  <text x="970" y="105" text-anchor="middle" fill="white" font-family="Arial" font-size="9">POST /admin/acl/index/login</text>
+  <text x="970" y="120" text-anchor="middle" fill="white" font-family="Arial" font-size="9">axios.interceptors.request</text>
+  
+  <!-- 5. 服务器验证 -->
+  <polygon points="970,180 1050,210 970,240 890,210" fill="url(#decisionGrad)" stroke="#E65100" stroke-width="2"/>
+  <text x="970" y="205" text-anchor="middle" fill="white" font-family="Arial" font-size="12" font-weight="bold">5. 服务器验证</text>
+  <text x="970" y="220" text-anchor="middle" fill="white" font-family="Arial" font-size="10">验证用户名密码</text>
+  <text x="970" y="235" text-anchor="middle" fill="white" font-family="Arial" font-size="9">JWT Token生成</text>
+  
+  <!-- 6. 响应拦截器处理成功 -->
+  <rect x="1130" y="160" width="220" height="100" rx="12" fill="url(#processGrad)" stroke="#1565C0" stroke-width="2"/>
+  <text x="1240" y="185" text-anchor="middle" fill="white" font-family="Arial" font-size="14" font-weight="bold">6. 响应拦截器处理</text>
+  <text x="1240" y="205" text-anchor="middle" fill="white" font-family="Arial" font-size="11">/utils/http/request.ts</text>
+  <text x="1240" y="220" text-anchor="middle" fill="white" font-family="Arial" font-size="10">提取响应数据</text>
+  <text x="1240" y="235" text-anchor="middle" fill="white" font-family="Arial" font-size="9">return response.data.data</text>
+  <text x="1240" y="250" text-anchor="middle" fill="white" font-family="Arial" font-size="9">interceptors.response</text>
+  
+  <!-- 7. Redux状态更新 -->
+  <rect x="860" y="300" width="220" height="100" rx="12" fill="url(#storageGrad)" stroke="#455A64" stroke-width="2"/>
+  <text x="970" y="325" text-anchor="middle" fill="white" font-family="Arial" font-size="14" font-weight="bold">7. Redux状态更新</text>
+  <text x="970" y="345" text-anchor="middle" fill="white" font-family="Arial" font-size="11">/pages/login/slice.ts</text>
+  <text x="970" y="360" text-anchor="middle" fill="white" font-family="Arial" font-size="10">更新用户token状态</text>
+  <text x="970" y="375" text-anchor="middle" fill="white" font-family="Arial" font-size="9">loginAsync.fulfilled</text>
+  <text x="970" y="390" text-anchor="middle" fill="white" font-family="Arial" font-size="9">state.token = action.payload</text>
+  
+  <!-- 8. LocalStorage持久化 -->
+  <rect x="590" y="300" width="220" height="100" rx="12" fill="url(#storageGrad)" stroke="#455A64" stroke-width="2"/>
+  <text x="700" y="325" text-anchor="middle" fill="white" font-family="Arial" font-size="14" font-weight="bold">8. LocalStorage持久化</text>
+  <text x="700" y="345" text-anchor="middle" fill="white" font-family="Arial" font-size="11">/pages/login/slice.ts</text>
+  <text x="700" y="360" text-anchor="middle" fill="white" font-family="Arial" font-size="10">本地存储token</text>
+  <text x="700" y="375" text-anchor="middle" fill="white" font-family="Arial" font-size="9">localStorage.setItem</text>
+  <text x="700" y="390" text-anchor="middle" fill="white" font-family="Arial" font-size="9">("token", token)</text>
+  
+  <!-- 9. 路由跳转 -->
+  <rect x="320" y="300" width="220" height="100" rx="12" fill="url(#endGrad)" stroke="#6A1B9A" stroke-width="2"/>
+  <text x="430" y="325" text-anchor="middle" fill="white" font-family="Arial" font-size="14" font-weight="bold">9. 路由跳转</text>
+  <text x="430" y="345" text-anchor="middle" fill="white" font-family="Arial" font-size="11">/pages/login/index.tsx</text>
+  <text x="430" y="360" text-anchor="middle" fill="white" font-family="Arial" font-size="10">跳转到系统首页</text>
+  <text x="430" y="375" text-anchor="middle" fill="white" font-family="Arial" font-size="9">navigate("/syt/dashboard")</text>
+  <text x="430" y="390" text-anchor="middle" fill="white" font-family="Arial" font-size="9">React Router导航</text>
+  
+  <!-- 错误处理分支 -->
+  <rect x="590" y="160" width="220" height="100" rx="12" fill="url(#errorGrad)" stroke="#C62828" stroke-width="2"/>
+  <text x="700" y="185" text-anchor="middle" fill="white" font-family="Arial" font-size="14" font-weight="bold">错误处理</text>
+  <text x="700" y="205" text-anchor="middle" fill="white" font-family="Arial" font-size="11">/utils/http/request.ts</text>
+  <text x="700" y="220" text-anchor="middle" fill="white" font-family="Arial" font-size="10">显示错误信息</text>
+  <text x="700" y="235" text-anchor="middle" fill="white" font-family="Arial" font-size="9">message.error(errorMsg)</text>
+  <text x="700" y="250" text-anchor="middle" fill="white" font-family="Arial" font-size="9">Promise.reject(error)</text>
+  
+  <!-- Token使用流程 -->
+  <rect x="50" y="450" width="220" height="100" rx="12" fill="url(#processGrad)" stroke="#1565C0" stroke-width="2"/>
+  <text x="160" y="475" text-anchor="middle" fill="white" font-family="Arial" font-size="14" font-weight="bold">Token自动携带</text>
+  <text x="160" y="495" text-anchor="middle" fill="white" font-family="Arial" font-size="11">/utils/http/request.ts</text>
+  <text x="160" y="510" text-anchor="middle" fill="white" font-family="Arial" font-size="10">请求时自动添加token</text>
+  <text x="160" y="525" text-anchor="middle" fill="white" font-family="Arial" font-size="9">config.headers.token = token</text>
+  <text x="160" y="540" text-anchor="middle" fill="white" font-family="Arial" font-size="9">store.getState().user.token</text>
+  
+  <!-- 权限验证HOC -->
+  <rect x="320" y="450" width="220" height="100" rx="12" fill="url(#processGrad)" stroke="#1565C0" stroke-width="2"/>
+  <text x="430" y="475" text-anchor="middle" fill="white" font-family="Arial" font-size="14" font-weight="bold">权限验证HOC</text>
+  <text x="430" y="495" text-anchor="middle" fill="white" font-family="Arial" font-size="11">/withAuthorization</text>
+  <text x="430" y="510" text-anchor="middle" fill="white" font-family="Arial" font-size="10">检查token有效性</text>
+  <text x="430" y="525" text-anchor="middle" fill="white" font-family="Arial" font-size="9">token ? 继续 : 跳转登录</text>
+  <text x="430" y="540" text-anchor="middle" fill="white" font-family="Arial" font-size="9">高阶组件包装</text>
+  
+  <!-- 获取用户信息 -->
+  <rect x="590" y="450" width="220" height="100" rx="12" fill="url(#processGrad)" stroke="#1565C0" stroke-width="2"/>
+  <text x="700" y="475" text-anchor="middle" fill="white" font-family="Arial" font-size="14" font-weight="bold">获取用户信息</text>
+  <text x="700" y="495" text-anchor="middle" fill="white" font-family="Arial" font-size="11">/api/user/index.ts</text>
+  <text x="700" y="510" text-anchor="middle" fill="white" font-family="Arial" font-size="10">请求用户详细信息</text>
+  <text x="700" y="525" text-anchor="middle" fill="white" font-family="Arial" font-size="9">reqGetUserInfo()</text>
+  <text x="700" y="540" text-anchor="middle" fill="white" font-family="Arial" font-size="9">GET /admin/acl/index/info</text>
+  
+  <!-- 用户信息存储 -->
+  <rect x="860" y="450" width="220" height="100" rx="12" fill="url(#storageGrad)" stroke="#455A64" stroke-width="2"/>
+  <text x="970" y="475" text-anchor="middle" fill="white" font-family="Arial" font-size="14" font-weight="bold">用户信息存储</text>
+  <text x="970" y="495" text-anchor="middle" fill="white" font-family="Arial" font-size="11">/pages/login/slice.ts</text>
+  <text x="970" y="510" text-anchor="middle" fill="white" font-family="Arial" font-size="10">保存用户基本信息</text>
+  <text x="970" y="525" text-anchor="middle" fill="white" font-family="Arial" font-size="9">state.name = name</text>
+  <text x="970" y="540" text-anchor="middle" fill="white" font-family="Arial" font-size="9">state.avatar = avatar</text>
+  
+  <!-- 登出处理 -->
+  <rect x="1130" y="450" width="220" height="100" rx="12" fill="url(#errorGrad)" stroke="#C62828" stroke-width="2"/>
+  <text x="1240" y="475" text-anchor="middle" fill="white" font-family="Arial" font-size="14" font-weight="bold">登出处理</text>
+  <text x="1240" y="495" text-anchor="middle" fill="white" font-family="Arial" font-size="11">/layouts/Avatar/index.tsx</text>
+  <text x="1240" y="510" text-anchor="middle" fill="white" font-family="Arial" font-size="10">清除token和用户信息</text>
+  <text x="1240" y="525" text-anchor="middle" fill="white" font-family="Arial" font-size="9">dispatch(logoutAsync())</text>
+  <text x="1240" y="540" text-anchor="middle" fill="white" font-family="Arial" font-size="9">localStorage.removeItem</text>
+  
+  <!-- 连接线和关系说明 -->
+  <!-- 1 -> 2 -->
+  <path d="M270 80 L320 80" stroke="#333" stroke-width="2" fill="none" marker-end="url(#arrowhead)"/>
+  <text x="295" y="70" text-anchor="middle" fill="#333" font-family="Arial" font-size="10" font-weight="bold">表单提交</text>
+  
+  <!-- 2 -> 3 -->
+  <path d="M540 80 L590 80" stroke="#333" stroke-width="2" fill="none" marker-end="url(#arrowhead)"/>
+  <text x="565" y="70" text-anchor="middle" fill="#333" font-family="Arial" font-size="10" font-weight="bold">调用API</text>
+  
+  <!-- 3 -> 4 -->
+  <path d="M810 80 L860 80" stroke="#333" stroke-width="2" fill="none" marker-end="url(#arrowhead)"/>
+  <text x="835" y="70" text-anchor="middle" fill="#333" font-family="Arial" font-size="10" font-weight="bold">HTTP请求</text>
+  
+  <!-- 4 -> 5 -->
+  <path d="M970 130 L970 180" stroke="#333" stroke-width="2" fill="none" marker-end="url(#arrowhead)"/>
+  <text x="1000" y="155" text-anchor="middle" fill="#333" font-family="Arial" font-size="10" font-weight="bold">发送到服务器</text>
+  
+  <!-- 5 -> 6 (成功) -->
+  <path d="M1050 210 L1130 210" stroke="#4CAF50" stroke-width="2" fill="none" marker-end="url(#arrowhead)"/>
+  <text x="1090" y="200" text-anchor="middle" fill="#4CAF50" font-family="Arial" font-size="10" font-weight="bold">验证成功</text>
+  
+  <!-- 5 -> 错误 (失败) -->
+  <path d="M890 210 L810 210" stroke="#F44336" stroke-width="2" fill="none" marker-end="url(#arrowhead)"/>
+  <text x="850" y="200" text-anchor="middle" fill="#F44336" font-family="Arial" font-size="10" font-weight="bold">验证失败</text>
+  
+  <!-- 6 -> 7 -->
+  <path d="M1130 250 L1080 300" stroke="#333" stroke-width="2" fill="none" marker-end="url(#arrowhead)"/>
+  <text x="1120" y="280" text-anchor="middle" fill="#333" font-family="Arial" font-size="10" font-weight="bold">更新状态</text>
+  
+  <!-- 7 -> 8 -->
+  <path d="M860 350 L810 350" stroke="#333" stroke-width="2" fill="none" marker-end="url(#arrowhead)"/>
+  <text x="835" y="340" text-anchor="middle" fill="#333" font-family="Arial" font-size="10" font-weight="bold">同步存储</text>
+  
+  <!-- 8 -> 9 -->
+  <path d="M590 350 L540 350" stroke="#333" stroke-width="2" fill="none" marker-end="url(#arrowhead)"/>
+  <text x="565" y="340" text-anchor="middle" fill="#333" font-family="Arial" font-size="10" font-weight="bold">触发跳转</text>
+  
+  <!-- Token使用流程连接 -->
+  <path d="M270 500 L320 500" stroke="#666" stroke-width="2" stroke-dasharray="5,5" fill="none" marker-end="url(#arrowhead)"/>
+  <text x="295" y="490" text-anchor="middle" fill="#666" font-family="Arial" font-size="10">权限检查</text>
+  
+  <path d="M540 500 L590 500" stroke="#666" stroke-width="2" stroke-dasharray="5,5" fill="none" marker-end="url(#arrowhead)"/>
+  <text x="565" y="490" text-anchor="middle" fill="#666" font-family="Arial" font-size="10">获取信息</text>
+  
+  <path d="M810 500 L860 500" stroke="#666" stroke-width="2" stroke-dasharray="5,5" fill="none" marker-end="url(#arrowhead)"/>
+  <text x="835" y="490" text-anchor="middle" fill="#666" font-family="Arial" font-size="10">保存信息</text>
+  
+  <path d="M1080 500 L1130 500" stroke="#666" stroke-width="2" stroke-dasharray="5,5" fill="none" marker-end="url(#arrowhead)"/>
+  <text x="1105" y="490" text-anchor="middle" fill="#666" font-family="Arial" font-size="10">登出操作</text>
+  
+  <!-- 从Redux状态连接到Token使用 -->
+  <path d="M970 400 L160 450" stroke="#9C27B0" stroke-width="2" stroke-dasharray="3,3" fill="none"/>
+  <text x="565" y="425" text-anchor="middle" fill="#9C27B0" font-family="Arial" font-size="10" font-weight="bold">Token状态读取</text>
+  
+  <!-- 标题 -->
+  <text x="700" y="750" text-anchor="middle" fill="#333" font-family="Arial" font-size="18" font-weight="bold">SYT系统 Token获取与验证详细流程图</text>
+  
+  <!-- 图例 -->
+  <rect x="50" y="600" width="40" height="20" fill="url(#startGrad)"/>
+  <text x="100" y="615" fill="#333" font-family="Arial" font-size="12">用户操作</text>
+  
+  <rect x="200" y="600" width="40" height="20" fill="url(#processGrad)"/>
+  <text x="250" y="615" fill="#333" font-family="Arial" font-size="12">系统处理</text>
+  
+  <rect x="350" y="600" width="40" height="20" fill="url(#decisionGrad)"/>
+  <text x="400" y="615" fill="#333" font-family="Arial" font-size="12">判断逻辑</text>
+  
+  <rect x="500" y="600" width="40" height="20" fill="url(#storageGrad)"/>
+  <text x="550" y="615" fill="#333" font-family="Arial" font-size="12">数据存储</text>
+  
+  <rect x="650" y="600" width="40" height="20" fill="url(#errorGrad)"/>
+  <text x="700" y="615" fill="#333" font-family="Arial" font-size="12">错误处理</text>
+  
+  <rect x="800" y="600" width="40" height="20" fill="url(#endGrad)"/>
+  <text x="850" y="615" fill="#333" font-family="Arial" font-size="12">流程结束</text>
+</svg>

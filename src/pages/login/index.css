@@ -9,14 +9,12 @@
     它会把 .login 元素变成一个“弹性容器”，这样我们就可以很方便地控制它内部子元素（比如登录框）的对齐方式。
   */
   display: flex;
-
   /*
     align-items: center;
     在 Flexbox 布局中，这个属性用于垂直居中容器内的子元素。
     它会把登录框在页面的垂直方向上移动到正中间。
   */
   align-items: center;
-
   /*
     justify-content: center;
     在 Flexbox 布局中，这个属性用于水平居中容器内的子元素。
@@ -24,28 +22,24 @@
     结合上面的 align-items: center; 就能实现子元素在父容器中完美地水平垂直居中。
   */
   justify-content: center;
-
   /*
     width: 100%;
     设置 .login 元素的宽度为其父元素宽度的 100%。
     通常这意味着它会撑满整个浏览器窗口的宽度。
   */
   width: 100%;
-
   /*
     height: 100%;
     设置 .login 元素的高度为其父元素高度的 100%。
     通常这意味着它会撑满整个浏览器窗口的高度。
   */
   height: 100%;
-
   /*
     background-image: url('./bg.jpg');
     为 .login 元素设置背景图片。
     url('./bg.jpg') 表示图片文件 `bg.jpg` 和这个 .less 文件在同一个文件夹里。
   */
-  background-image: url("./bg.jpg");
-
+  background-image: url("bg.jpg");
   /*
     background-size: 100% 100%;
     设置背景图片的尺寸。
@@ -54,7 +48,6 @@
   */
   background-size: 100% 100%;
 }
-
 /*
   这是一个针对类名为 "login-container" 的元素的样式规则。
   这通常是包裹着输入框和按钮的那个白色或半透明的登录框本身。
@@ -65,27 +58,24 @@
     设置登录框的固定宽度为 400 像素。
   */
   width: 400px;
-
   /*
     height: 400px;
     设置登录框的固定高度为 400 像素。
   */
   height: 400px;
-
   /*
     这是 Less 的一个特性：嵌套规则。
     这条规则只会应用在 "login-container" 内部的 <h1> 标签上。
     <h1> 标签通常用来显示标题，比如“系统登录”。
   */
-  h1 {
-    /*
+}
+.login-container h1 {
+  /*
       text-align: center;
       让 <h1> 标签内的文字水平居中显示。
     */
-    text-align: center;
-  }
+  text-align: center;
 }
-
 /*
   这是一个针对类名为 "login-btn" 的元素的样式规则。
   这通常是页面上的“登录”按钮。

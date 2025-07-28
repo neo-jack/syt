@@ -1,71 +1,97 @@
+// 这个文件定义了订单管理相关的所有数据类型
+// 订单就是用户预约挂号后生成的记录，记录了挂号的详细信息
+// 比如：在哪个医院、哪个科室、哪个医生、什么时间、花了多少钱等
+
 /*
-   "records": [
-      {
-        "id": 46,
-        "createTime": "2022-04-23 11:12:44",
-        "updateTime": "2022-04-23 11:12:44",
-        "isDeleted": 0,
-        "param": {
-          "orderStatusString": "已支付"
-        },
-        "userId": 83,
-        "outTradeNo": "165068356476431",
-        "hoscode": "1000_0",
-        "hosname": "北京协和医院",
-        "depcode": "200040878",
-        "depname": "多发性硬化专科门诊",
-        "scheduleId": null,
-        "title": "副主任医师",
-        "reserveDate": "2022-04-23",
-        "reserveTime": 0,
-        "patientId": 36,
-        "patientName": "高嘉玲",
-        "patientPhone": "15616155765",
-        "hosRecordId": "49",
-        "number": 36,
-        "fetchTime": "2022-04-2309:00前",
-        "fetchAddress": "一层114窗口",
-        "amount": 100,
-        "quitTime": "2022-04-22 15:30",
-        "orderStatus": 1
-      }
-    ],
-    "total": 46,
+  下面是服务器返回的真实订单数据的例子：
+  这是一个完整的订单信息，包含了用户挂号的所有详细信息
+  
+  "records": [ // 订单列表数组，包含多个订单
+     {
+       "id": 46, // 订单的唯一标识号，就像购物网站的订单号
+       "createTime": "2022-04-23 11:12:44", // 订单创建时间，即用户下单的时间
+       "updateTime": "2022-04-23 11:12:44", // 订单最后修改时间
+       "isDeleted": 0, // 是否被删除：0表示正常，1表示已删除
+       "param": { // 额外的显示信息
+         "orderStatusString": "已支付" // 订单状态的文字描述，比如"已支付"、"已预约"、"已完成"
+       },
+       "userId": 83, // 下单用户的ID，标识是哪个用户预约的
+       "outTradeNo": "165068356476431", // 外部交易号，用于对接支付系统的唯一标识
+       "hoscode": "1000_0", // 医院编码，标识在哪个医院预约
+       "hosname": "北京协和医院", // 医院名称
+       "depcode": "200040878", // 科室编码，标识预约的是哪个科室
+       "depname": "多发性硬化专科门诊", // 科室名称
+       "scheduleId": null, // 排班ID（这里是null表示不需要）
+       "title": "副主任医师", // 医生的职称，比如"主任医师"、"副主任医师"
+       "reserveDate": "2022-04-23", // 预约的日期，即要去看病的日期
+       "reserveTime": 0, // 预约的时段：0表示上午，1表示下午
+       "patientId": 36, // 就诊人的ID，可能不是下单用户本人
+       "patientName": "高嘉玲", // 就诊人姓名，实际去看病的人
+       "patientPhone": "15616155765", // 就诊人的联系电话
+       "hosRecordId": "49", // 医院记录ID，医院内部的挂号记录号
+       "number": 36, // 挂号序号，比如今天第36号病人
+       "fetchTime": "2022-04-2309:00前", // 取号时间限制，必须在这个时间前取号
+       "fetchAddress": "一层114窗口", // 取号地点，告诉病人在哪里取号
+       "amount": 100, // 挂号费用，单位是元
+       "quitTime": "2022-04-22 15:30", // 退号截止时间，过了这个时间就不能退号了
+       "orderStatus": 1 // 订单状态编码：0未支付，1已支付，2已就诊，3已取消等
+     }
+   ],
+   "total": 46, // 总共有多少个订单记录
 
 */
+
+// 单个订单的详细信息类型定义
+// 这里定义了一个订单应该包含哪些信息
 export interface OrderItem {
-  id: number;
-  createTime: string;
-  updateTime: string;
-  isDeleted: number;
-  param: {
-    orderStatusString: string;
+  id: number; // 订单唯一标识号，用于区分不同的订单
+  createTime: string; // 订单创建时间，格式like "2022-04-23 11:12:44"
+  updateTime: string; // 订单最后更新时间，当订单状态改变时会更新
+  isDeleted: number; // 删除标记：0表示正常订单，1表示已删除的订单
+  param: { // 额外的显示信息对象
+    orderStatusString: string; // 订单状态的中文描述，比如"已支付"、"已完成"、"已取消"
   };
-  userId: number;
-  outTradeNo: string;
-  hoscode: string;
-  hosname: string;
-  depcode: string;
-  depname: string;
-  // scheduleId: null;
-  title: string;
-  reserveDate: string;
-  reserveTime: number;
-  patientId: number;
-  patientName: string;
-  patientPhone: string;
-  hosRecordId: string;
-  number: number;
-  fetchTime: string;
-  fetchAddress: string;
-  amount: number;
-  quitTime: string;
-  orderStatus: number;
+  userId: number; // 下单用户的ID，标识是哪个用户账号下的订单
+  outTradeNo: string; // 外部交易流水号，用于和支付宝、微信等支付平台对账
+  hoscode: string; // 医院编码，每个医院都有唯一的编码标识
+  hosname: string; // 医院名称，比如"北京协和医院"、"上海第一人民医院"
+  depcode: string; // 科室编码，每个科室都有唯一的编码标识
+  depname: string; // 科室名称，比如"心内科"、"儿科"、"妇产科"
+  // scheduleId: null; // 排班ID（注释掉表示这个字段暂时不使用）
+  title: string; // 医生职称，比如"主任医师"、"副主任医师"、"住院医师"
+  reserveDate: string; // 预约就诊日期，格式like "2022-04-23"
+  reserveTime: number; // 预约时段：0表示上午（通常8:00-12:00），1表示下午（通常14:00-18:00）
+  patientId: number; // 就诊人ID，可能和下单用户不是同一人（比如替家人挂号）
+  patientName: string; // 就诊人姓名，实际去医院看病的人的名字
+  patientPhone: string; // 就诊人联系电话，医院可能会用来联系病人
+  hosRecordId: string; // 医院内部挂号记录ID，医院自己的系统中的记录号
+  number: number; // 挂号序号，比如当天该科室的第几号病人
+  fetchTime: string; // 取号时间要求，比如"2022-04-23 09:00前"，必须在这个时间前取号
+  fetchAddress: string; // 取号地点说明，告诉病人在医院的哪个窗口取号
+  amount: number; // 挂号费用，单位是元（人民币）
+  quitTime: string; // 退号截止时间，过了这个时间就不能申请退号了
+  orderStatus: number; // 订单状态码：0未支付，1已支付，2已就诊，3已取消，4已退款等
 }
 
+// 订单列表类型：多个订单组成的数组
+// 当我们查询订单列表时，服务器会返回多个订单的数组
 export type OrderList = OrderItem[];
 
+// 获取订单列表时服务器返回的完整数据结构
+// 除了订单数据，还包含总数信息用于分页显示
 export interface GetOrderListResponse {
-  records: OrderList;
-  total: number;
+  records: OrderList; // 当前页的订单列表数据
+  total: number; // 总共有多少条订单记录（用于计算总页数和显示分页组件）
 }
+
+// 文件总结：
+// 这个文件定义了医院挂号订单系统的数据类型，主要包括：
+// 1. 订单基本信息 - 订单号、创建时间、用户信息等
+// 2. 医院相关信息 - 医院名称、科室、医生职称等  
+// 3. 预约详情 - 就诊日期、时段、挂号序号等
+// 4. 就诊人信息 - 病人姓名、电话等联系方式
+// 5. 费用和支付 - 挂号费、支付状态、交易流水号等
+// 6. 取号信息 - 取号地点、时间要求、退号规则等
+//
+// 这些数据类型确保了挂号订单系统的数据格式统一，
+// 让前端能够正确显示订单信息，方便用户查看和管理自己的挂号记录。

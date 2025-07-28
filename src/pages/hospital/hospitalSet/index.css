@@ -13,7 +13,6 @@
     `20px` 表示设置了 20 像素的顶部外边距。
   */
   margin-top: 20px;
-
   /*
     margin-bottom: 20px;
     `margin-bottom` 是一个 CSS 属性，用于设置元素底部的外边距。
@@ -22,7 +21,6 @@
   */
   margin-bottom: 20px;
 }
-
 /*
   总结：
   这个 `.mtb` 工具类的唯一目的就是给一个元素同时添加 20px 的上外边距和 20px 的下外边距。
